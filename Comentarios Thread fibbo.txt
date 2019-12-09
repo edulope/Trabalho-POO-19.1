@@ -1,0 +1,4 @@
+o programa funciona ate n = 92, visto que o numero maximo que o long consegue chegar e 9.223.372.036.854.775.807 e o termo 93 da sequencia e 12200160415121876738
+
+
+OBS, o programa threads contem tanto o exercicio de fibbonachi quanto o de somatorio

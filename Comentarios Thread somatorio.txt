@@ -1,0 +1,99 @@
+Como funciona: programa divide a soma do numero 2000000000 em threads multiplas do numero, de forma que todas as threads somam a mesma quantidade de termos
+depois, os dados sao armazenados num vetor, pra cada indice n, n contem o resultado da soma(armazenado para confirmacao), n+1 contem o numero de threads e n + 2 o tempo gasto
+se deseja alterar algum dfeado relacionado a quantidade de threads do programa, primeiro altere o int numero, depois o limite do  for(int j = 1; j<limite ;j++)
+o codigo final esta usando theads de base 2 por questao de fazer os testes de forma mais rapida, mas caso queira mudar para um teste que cheque numero por numero.
+num intervalo inteiro, substituir o codigo por:
+
+    public static void programasoma() throws InterruptedException{
+        int numero = 20000;
+        boolean b;
+        int i;
+        long [] vetor = new long[(3*numero)];
+        int indice = 0;
+        for(int j = 1; j<20000 ;j++){
+            if(somatorio.max%j == 0){
+            inicio = System.currentTimeMillis();
+            somatorio.inicializa();
+            
+            Thread [] t = new Thread[j];
+            int ini = 0;
+            int fim = somatorio.max/j;
+            for(i = 0; i<j; i++){
+                t[i] = new Thread(new somatorio(ini, fim));
+                t[i].start();
+                t[i].join();
+                ini = fim + 1;
+                fim = somatorio.max/j *(i+2);
+            }
+            b = true;
+       System.out.println("o somatorio e " + somatorio.soma);
+       f = System.currentTimeMillis();
+       vetor[indice] = somatorio.soma;
+       vetor[indice + 1] = (j);
+       vetor[indice + 2] = f-inicio;
+       }
+            else vetor[indice] = 0;
+            indice = indice + 3;
+    }
+            for(i = 0; i<numero*3; i = i+3){
+                if(vetor[i] != 0){
+                System.out.println("soma "+vetor[i]+" numero de threads "+vetor[i+1]+" tempo " + vetor[i+2]);
+            }
+        }
+    }
+}
+
+
+por fim, eis uns dados obtidos atraves de testes
+
+
+
+soma 2000000001000000000 numero de threads 1 tempo 3198
+soma 2000000001000000000 numero de threads 2 tempo 1387
+soma 2000000001000000000 numero de threads 4 tempo 1396
+soma 2000000001000000000 numero de threads 5 tempo 1376
+soma 2000000001000000000 numero de threads 8 tempo 1370
+soma 2000000001000000000 numero de threads 10 tempo 1369
+soma 2000000001000000000 numero de threads 16 tempo 1373
+soma 2000000001000000000 numero de threads 20 tempo 1377
+soma 2000000001000000000 numero de threads 25 tempo 1375
+soma 2000000001000000000 numero de threads 32 tempo 1386
+soma 2000000001000000000 numero de threads 40 tempo 1395
+soma 2000000001000000000 numero de threads 50 tempo 1382
+soma 2000000001000000000 numero de threads 64 tempo 1398
+soma 2000000001000000000 numero de threads 80 tempo 1399
+soma 2000000001000000000 numero de threads 100 tempo 1412
+soma 2000000001000000000 numero de threads 125 tempo 1412
+soma 2000000001000000000 numero de threads 128 tempo 1418
+soma 2000000001000000000 numero de threads 160 tempo 1437
+soma 2000000001000000000 numero de threads 200 tempo 1450
+soma 2000000001000000000 numero de threads 250 tempo 1465
+soma 2000000001000000000 numero de threads 256 tempo 1461
+soma 2000000001000000000 numero de threads 320 tempo 1492
+soma 2000000001000000000 numero de threads 400 tempo 1516
+soma 2000000001000000000 numero de threads 500 tempo 1556
+soma 2000000001000000000 numero de threads 512 tempo 1592
+soma 2000000001000000000 numero de threads 625 tempo 1604
+soma 2000000001000000000 numero de threads 640 tempo 1598
+soma 2000000001000000000 numero de threads 800 tempo 1682
+soma 2000000001000000000 numero de threads 1000 tempo 1722
+soma 2000000001000000000 numero de threads 1024 tempo 1740
+soma 2000000001000000000 numero de threads 1250 tempo 1825
+soma 2000000001000000000 numero de threads 1280 tempo 1828
+soma 2000000001000000000 numero de threads 1600 tempo 1927
+soma 2000000001000000000 numero de threads 2000 tempo 2079
+soma 2000000001000000000 numero de threads 2500 tempo 2218
+soma 2000000001000000000 numero de threads 2560 tempo 2241
+soma 2000000001000000000 numero de threads 3125 tempo 2391
+soma 2000000001000000000 numero de threads 3200 tempo 2429
+soma 2000000001000000000 numero de threads 4000 tempo 2445
+soma 2000000001000000000 numero de threads 5000 tempo 2708
+soma 2000000001000000000 numero de threads 5120 tempo 2724
+soma 2000000001000000000 numero de threads 6250 tempo 2645
+soma 2000000001000000000 numero de threads 6400 tempo 2773
+soma 2000000001000000000 numero de threads 8000 tempo 2986
+soma 2000000001000000000 numero de threads 10000 tempo 3346
+soma 2000000001000000000 numero de threads 12500 tempo 3811
+soma 2000000001000000000 numero de threads 12800 tempo 3994
+soma 2000000001000000000 numero de threads 15625 tempo 4464
+soma 2000000001000000000 numero de threads 16000 tempo 4516
